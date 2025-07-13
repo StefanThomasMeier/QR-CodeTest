@@ -5,17 +5,50 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
-  body {
-    background: linear-gradient(145deg, #e0f7fa, #fff);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
+body {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px);
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(3px);
+  z-index: -1;
+}
   
-  .container {
-    text-align: center;
-  }
+.container {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.35);
+  padding: 40px;
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.qr-container {
+  width: 320px;
+}
   
   h1 {
     font-size: 3rem;
@@ -29,8 +62,10 @@
   padding: 10px;
   width: 250px;
   margin-bottom: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(3px);
 }
 
 .qr-container button {
@@ -40,8 +75,18 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.qr-container button:hover {
+  background-color: #004d43;
 }
 
 #qrcode {
-  margin-top: 20px;
+  margin: 40px auto 0;
+  width: 256px;
+  height: 256px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
